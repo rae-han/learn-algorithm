@@ -5,18 +5,11 @@ function solution(participant, completion) {
   // return participant.find((value, index) => value !== completion[index]);
 
   // return participant.sort().find((value, index) => value !== completion[index], completion.sort());
-  return participant.find(name=>!completion[name]--,completion.map(name=>completion[name]=(completion[name]|0)+1));
+  // return participant.find(name=>!completion[name]--,completion.map(name=>completion[name]=(completion[name]|0)+1));
+  return participant.find(name => { 
+    return !completion[name]-- 
+  },completion.map(name=>completion[name]=(completion[name]|0)+1));
 
-  // const that = completion.map(man=>completion[man]=(completion[man]|0)+1);
-  // console.log(that)
-  // console.log(completion)
-
-  // return participant.find(
-  //   man=>{
-  //     console.log(completion);
-  //     return !completion[man]--;
-  //   }, completion.map(man=>completion[man]=(completion[man]|0)+1)
-  // )
 }
 
 const testCase = [
