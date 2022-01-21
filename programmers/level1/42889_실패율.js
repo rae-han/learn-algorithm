@@ -4,7 +4,7 @@ function solution(N, stages) {
     console.log(acc[cur])
     acc[cur]=(acc[cur]|0)+1;
     return acc;
-  }, [].length = 6);
+  }, new Array(N+2).fill(0));
 
   console.log('######## reduce result ########')
   console.log(stages)
@@ -26,8 +26,8 @@ function solution(N, stages) {
 
 const testCases = [
   // { number: 5, stages: [2,1,2,2,4,3,3], result: [3,4,2,1,5] },
-  // { number: 5, stages: [2,1,2,6,2,4,3,3], result: [3,4,2,1,5] },
-  { number: 4, stages: [4,4,4,4,4], result: [4,1,2,3] },
+  { number: 5, stages: [2,1,2,6,2,4,3,3], result: [3,4,2,1,5] },
+  // { number: 4, stages: [4,4,4,4,4], result: [4,1,2,3] },
 ]
 
 testCases.forEach(({ number, stages, result }) => {
