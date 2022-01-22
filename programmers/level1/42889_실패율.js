@@ -10,14 +10,14 @@ function solution(N, stages) {
   console.log(stages)
 
   console.log('######## reduceRight ########')
-  stages.reduceRight((pre, cur, idx) => {
+  stages = stages.reduceRight((pre, cur, idx) => {
     console.log(`idx: ${idx}`)
-    if(idx!==N) {
-      console.log('not found complete')
-    }
+    console.log(`cur: ${cur}`);
 
+    pre.count += cur;
+    pre.list[idx] = { idx, rate: cur/pre.count }
     return pre;
-  }, [])
+  }, { count: 0, list: [] })
   console.log(stages)
   
   return 1;
