@@ -5,7 +5,7 @@ function solution(participant, completion) {
   // return participant.find((value, index) => value !== completion[index]);
 
   // return participant.sort().find((value, index) => value !== completion[index], completion.sort()); // 48,68,101,106,93
-  // return participant.find(name=>!completion[name]--,completion.forEach(name=>completion[name]=(completion[name]??0)+1)); // 20,31,33,37,42
+  // return participant.find(name=>!completion[name]--,completion.forEach(name=>completion[name]=(completion[name]??0)+1));
   // return participant.find(name=>!completion[name]--,completion.forEach(name=>completion[name]=(completion[name]||0)+1)); // 20,31,33,37,42
   // return participant.find(name=>!completion[name]--,completion.forEach(name=>completion[name]=(completion[name]|0)+1)); // 20,31,33,37,42
 
