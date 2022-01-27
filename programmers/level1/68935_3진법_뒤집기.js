@@ -14,3 +14,4 @@ let num7 = parseInt("f", 16);
 console.log(`num7: ${num7}`);
 
 console.log(1e10);
+console.log(1_234_567_890);
