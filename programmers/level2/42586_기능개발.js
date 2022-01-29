@@ -25,16 +25,27 @@ const solution = (progresses, speeds) => {
 
   // second
   // console.log(progresses.map((progress, idx) => (Math.ceil((100-progress) / speeds[idx]))|0))
-  let newProgresses =  progresses
-    .map((progress, idx) => Math.ceil((100-progress) / speeds[idx])|0)
-    .reduce(({max, count, list}, cur) => {
-      console.log('#', max, count, list, 'cur', cur)
-      let result = max>=cur ? { max, count: count+1, list } : { max: cur, count: 0, list: [...list, count+1] };
-      console.log('result', result);
-      return result;
-    }, { max: 0, count: 0, list: []});
+  let answer = [0]
+  let date =  progresses.map((progress, idx) => Math.ceil((100-progress) / speeds[idx])|0)
   
-  console.log(newProgresses)
+  let max = date[0];
+  for(let idx = 0, cur = 0; idx<date.length; idx++) {
+    if(max >= date[idx]) {
+      answer[cur]++;
+    } else {
+      max = date[idx];
+      answer[++cur] = 1;
+    }
+  }
+  return answer;
+
+
+    // .reduce(({max, count, list}, cur) => {
+    //   console.log('#', max, count, list, 'cur', cur)
+    //   let result = max>=cur ? { max, count: count+1, list } : { max: cur, count: 0, list: [...list, count+1] };
+    //   console.log(result);
+    //   return result;
+    // }, { max: 0, count: 0, list: []});
 };
 
 const testcases = [
