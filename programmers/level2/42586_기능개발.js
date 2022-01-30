@@ -29,14 +29,23 @@ const solution = (progresses, speeds) => {
   let date =  progresses.map((progress, idx) => Math.ceil((100-progress) / speeds[idx])|0)
   
   let max = date[0];
-  for(let idx = 0, cur = 0; idx<date.length; idx++) {
-    if(max >= date[idx]) {
-      answer[cur]++;
+  let current = 0;
+  // for(let idx = 0; idx<date.length; idx++) {
+  //   if(max >= date[idx]) {
+  //     answer[current]++;
+  //   } else {
+  //     max = date[idx];
+  //     answer[++current] = 1;
+  //   }
+  // }
+  date.forEach((d) => {
+    if(max >= d) {
+      answer[current]++;
     } else {
-      max = date[idx];
-      answer[++cur] = 1;
+      max = d;
+      answer[++current] = 1;
     }
-  }
+  })
   return answer;
 
 
