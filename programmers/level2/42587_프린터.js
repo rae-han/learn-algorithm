@@ -1,8 +1,6 @@
 function solution(priorities, location) {
   let turn = 1;
 
-  console.log(Math.max(...priorities));
-
   while(priorities.length > 0) {
     if(priorities[0] < Math.max(...priorities)) {
       priorities.push(priorities.shift());
