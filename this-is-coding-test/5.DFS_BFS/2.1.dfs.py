@@ -9,23 +9,23 @@ graph = [
     [2, 6, 8],
     [1, 7],
 ]
-visited = [False] * 9
-route = []
+visited = [False] * len(graph)
+routes = []
 
 
-def dfs(graph, v, visited, route):
+def dfs(graph, visited, routes, v):
     visited[v] = True
 
-    route.append(v)
+    routes.append(v)
 
     for i in graph[v]:
         if not visited[i]:
-            route = dfs(graph, i, visited, route)
+            routes = dfs(graph, visited, routes, v)
 
-    return route
+    return routes
 
 
-route = dfs(graph, 1, visited, route)
-print(route)
+routes = dfs(graph, visited, routes, 1)
+print(routes)
 
 
