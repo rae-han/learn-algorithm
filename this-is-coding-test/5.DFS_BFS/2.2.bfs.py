@@ -15,12 +15,23 @@ visited = [False] * len(graph)
 routes = []
 
 
-def bfs(graph, visited, routes, start):
-    queue = deque([start])
-    visited[start] = True
+def bfs(graph, visited, routes, init):
+    queue = deque([init])
+    visited[init] = True
 
-    
+    while len(queue):
+        next = queue.popleft()
+        routes.append(next)
+
+        for i in graph[next]:
+            if not visited[i]:
+                visited[i] = True
+                queue.append(i)
+
+    return routes
 
 
-bfs(graph, visited, routes, 1)
+routes = bfs(graph, visited, routes, 1)
+print(routes)
+
 

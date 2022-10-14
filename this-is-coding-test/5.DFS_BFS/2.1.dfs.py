@@ -13,14 +13,14 @@ visited = [False] * len(graph)
 routes = []
 
 
-def dfs(graph, visited, routes, v):
-    visited[v] = True
+def dfs(graph, visited, routes, value):
+    visited[value] = True
 
-    routes.append(v)
+    routes.append(value)
 
-    for i in graph[v]:
-        if not visited[i]:
-            routes = dfs(graph, visited, routes, v)
+    for node in graph[value]:
+        if not visited[node]:
+            routes = dfs(graph, visited, routes, node)
 
     return routes
 
