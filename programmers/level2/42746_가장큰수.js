@@ -5,14 +5,7 @@ const testcases = [
   { numbers: [0, 0], result: "0" },
 ];
 
-const solution = numbers => {
-  let a = numbers.map(n => n+'').sort((a, b) => (b+a) - (a+b)).join('').replace(/^0+/, '0');
-  console.log(a);
-  let b = a.replace(/(^0+)/, '0');
-  console.log(b)
-}
-
-// const solution = numbers => numbers.map(n => n+'').sort((a, b) => (b+a) - (a+b)).join('').replace(/^0+/, '0')
+const solution = numbers => numbers.map(n => n+'').sort((a, b) => (b+a) - (a+b)).join('').replace(/^0+/, '0');
 
 testcases.forEach(({numbers, result}) => console.log(solution(numbers), result));
 
@@ -26,7 +19,6 @@ console.log("10" < "3"); // true
 // 자리수가 다른데 앞자리가 같다면?
 console.log("30" > "3"); // true
 console.log("30" < "3"); // false
-
 
 console.log("103" > "310"); // false
 console.log("103" < "310"); // true
