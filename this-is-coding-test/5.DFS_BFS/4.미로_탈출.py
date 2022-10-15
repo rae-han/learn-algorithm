@@ -1,6 +1,8 @@
 from collections import deque
 
-maze = "111111 000001 111111 100000 111111"
+# maze = "111111 000001 111111 100000 111111"
+# maze = "101010 111111 000001 111111 111111"
+maze = "11000111 01111101 00000011 11111010 10001110 11100000 11111111"
 directions = [[-1, 0], [0, -1], [1, 0], [0, 1]]
 
 
@@ -16,25 +18,27 @@ def to_matrix(str, row):
 def bfs(value):
     row, column = len(value.split(' ')), len(value.split(' ')[0])
     data = to_matrix(value, row)
-    costs = [[0] * column for _ in range(row)]
+    cost = [[0] * column for _ in range(row)]
 
     queue = deque([[0, 0]])
-    cost = 1
-    costs[0][0] = cost
+    cost[0][0] = 1
 
     while queue:
-        cost += 1
-        [cx, cy] = queue.popleft()
+        [x, y] = queue.popleft()
 
         for [dx, dy] in directions:
-            [nx, ny] = [cx+dx, cy+dy]
-            if 0 <= nx < row and 0 <= ny < column:
-                
-                queue.append([nx, ny])
+            [nx, ny] = [x+dx, y+dy]
+            if 0 <= nx < row and 0 <= ny < column and data[nx][ny]:
+                next_cost = cost[x][y] + 1
 
-            print(queue)
+                if cost[nx][ny] > next_cost or not cost[nx][ny]:
+                    cost[nx][ny] = next_cost
+                    queue.append([nx, ny])
 
-        break
+        # break
+
+    # print(cost)
+    return cost[row-1][column-1]
 
 
-print(bfs(maze))
+print('minimum cost:', bfs(maze))
