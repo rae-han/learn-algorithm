@@ -1,4 +1,4 @@
-data = [0, 2, 5, 1, 9, 8, 7, 3, 4, 6]
+data = [2, 0, 5, 1, 9, 8, 7, 3, 4, 6]
 
 
 def insertion_sort(array):
