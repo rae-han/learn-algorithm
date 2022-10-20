@@ -41,10 +41,6 @@ def quick_sort(array):
     # 2. 데이터가 2개 이상이라면 정렬을 해준다.
     [swapped_array, pivot] = swap_data(array)
 
-    # [left_array, right_array] = [
-    #     [v for v in swapped_array if v < pivot],
-    #     [v for v in swapped_array if v > pivot],
-    # ]
     left_array, right_array = swapped_array[:pivot], swapped_array[pivot+1:]
     print(left_array, right_array)
 
