@@ -15,7 +15,6 @@ def binary_search_recursion(parts, target, start=0, end=None):
         else binary_search_recursion(parts, target, start, middle-1)
     )
 
-
 def object_search(parts, requests):
     dic = dict()
     result = []
