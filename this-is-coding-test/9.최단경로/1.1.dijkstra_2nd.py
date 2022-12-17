@@ -9,19 +9,30 @@ INFINITY = 987_654_321
 
 distance = [INFINITY] * (end + 1)
 
-for [start, end, cost] in data:
-    graph[start].append([end, cost])
+for [s, e, c] in data:
+    graph[s].append([e, c])
 
 visited[start] = True
-for [end, cost] in graph[start]:
-    distance[end] = cost
+distance[start] = 0
+for [e, c] in graph[start]:
+    distance[e] = c
 
 for _ in range(end):
     index = 0
     min_value = INFINITY
 
-    for i in distance[1:]:
-        print(i)
+    for i in range(len(distance)):
+        if min_value > distance[i] and not visited[i]:
+            index = i
+            min_value = distance[i]
+
+    visited[index] = True
+
+    for [e, c] in graph[index]:
+        if distance[e] > (distance[index] + c):
+            distance[e] = distance[index] + c
+
+print(distance)
 
 
 
