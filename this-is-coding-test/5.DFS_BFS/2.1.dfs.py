@@ -28,4 +28,3 @@ def dfs(graph, visited, routes, value):
 routes = dfs(graph, visited, routes, 1)
 print(routes)
 
-

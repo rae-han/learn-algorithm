@@ -34,4 +34,3 @@ def bfs(graph, visited, routes, init):
 routes = bfs(graph, visited, routes, 1)
 print(routes)
 
-
