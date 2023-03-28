@@ -1,65 +1,60 @@
 const data = [1, 2, 3, 4, 5, 6];
-const unions = [
+const unions1 = [
   [1, 4],
   [2, 3],
   [2, 4],
   [5, 6],
 ];
-// const unions = [
-//   [1, 2],
-//   [2, 3],
-//   [3, 4],
-//   [4, 5],
-//   [5, 6],
-// ];
+const unions2 = [
+  [5, 6],
+  [4, 5],
+  [3, 4],
+  [2, 3],
+  [1, 2],
+];
 // const unions = [
 //   [1, 2],
 //   [1, 3],
 //   [2, 3],
 // ];
 
+// const parent = Array.from({ length: data.length + 1 }).map((_, index) => index);
 const parent = {};
 
-data.forEach((value) => (parent[value] = value));
+data.forEach((v) => (parent[v] = v));
 console.log(1, parent);
 
-// const findParents = (n) => {
-//   if (parent[n] !== n) {
-//     return findParents(parent[n]);
-//   }
-//
-//   return n;
-// };
-
-const findParents = (parent, n) => {
-  if (parent[n] !== n) {
-    parent[n] = findParents(parent, parent[n]);
+const findRoot = (parent, n) => {
+  if (n !== parent[n]) {
+    parent[n] = findRoot(parent, parent[n]);
   }
 
   return parent[n];
 };
 
-unions.forEach(([x, y]) => {
-  let _x = findParents(parent, x);
-  let _y = findParents(parent, y);
+const unionNode = (parent, a, b) => {
+  a = findRoot(parent, a);
+  b = findRoot(parent, b);
 
-  console.log(3, x, y, "//", _x, _y);
-
-  if (_x === _y) {
-    console.log("Cycle!!!!");
-  }
-
-  if (_x < _y) {
-    parent[_y] = _x;
+  if (a < b) {
+    parent[b] = a;
   } else {
-    parent[_x] = _y;
+    parent[a] = b;
   }
+};
+
+unions1.forEach(([x, y]) => {
+  unionNode(parent, x, y);
 });
+console.log(3, parent);
+
+unions2.forEach(([x, y]) => {
+  unionNode(parent, x, y);
+});
+console.log(3, parent);
 
 console.log(2, parent);
 
 for (let [key, value] of Object.entries(parent)) {
-  console.log(123, key, value, findParents(parent, value));
+  console.log(findRoot(parent, key));
 }
-
-console.log(4, parent);

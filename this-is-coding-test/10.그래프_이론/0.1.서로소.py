@@ -36,6 +36,9 @@ for i in range(e):
     [a, b] = trunk[i]
     union_parent(parent, a, b)
 
+
+print(parent)
+
 # 각 원소가 속한 집합 출력하기
 print('각 원소가 속한 집합: ', end='')
 for i in range(1, v + 1):
