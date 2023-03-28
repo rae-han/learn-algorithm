@@ -43,18 +43,23 @@ const unionNode = (parent, a, b) => {
   }
 };
 
-unions1.forEach(([x, y]) => {
-  unionNode(parent, x, y);
-});
-console.log(3, parent);
+// unions1.forEach(([x, y]) => {
+//   unionNode(parent, x, y);
+// });
 
-unions2.forEach(([x, y]) => {
-  unionNode(parent, x, y);
+unions1.forEach(([x, y]) => {
+  console.log(x, y, findRoot(parent, x), findRoot(parent, y));
+  if (findRoot(parent, x) === findRoot(parent, y)) {
+    console.log("Cycle!!!!!!!!!!!!!!!!!!!!!");
+  } else {
+    unionNode(parent, x, y);
+  }
 });
-console.log(3, parent);
 
 console.log(2, parent);
 
 for (let [key, value] of Object.entries(parent)) {
   console.log(findRoot(parent, key));
 }
+
+console.log(3, parent);
