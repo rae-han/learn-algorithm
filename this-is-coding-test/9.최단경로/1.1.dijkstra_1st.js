@@ -37,7 +37,7 @@ const getSmallestNode = () => {
     if (!visited[idx] && cost[idx] < value) {
       console.log("in", index, value);
       index = idx;
-      value = cost[idx];
+      value = cost[idx];수
     }
   });
 
