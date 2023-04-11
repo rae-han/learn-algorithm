@@ -17,10 +17,8 @@ function Queue() {
     const newNode = new Node(data);
 
     if (this.isEmpty()) {
-      console.log(1, newNode);
       this.front = newNode;
     } else {
-      console.log(2, newNode);
       this.rear.next = newNode;
     }
 
@@ -32,11 +30,9 @@ function Queue() {
       return null;
     }
 
-    console.log(3, this.front);
     this.front = this.front.next;
 
     if (!this.front) {
-      console.log(4, this.rear);
       this.rear = null;
     }
   };
