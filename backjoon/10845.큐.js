@@ -1,41 +1,58 @@
 const fs = require("fs");
 // env
 const readFileSyncAddress = "./dev/stdin";
-// const readFileSyncAddress = "./10828.txt";
+// const readFileSyncAddress = "./10845.txt";
+
 const [n, ...arr] = fs
   .readFileSync(readFileSyncAddress)
   .toString()
   .trim()
   .split("\n");
 
-function Node(data, next) {
+function Node(data) {
+  this.next = null;
   this.data = data;
-  this.next = next;
 }
 
-function Stack() {
-  this.peak = null;
+function Queue() {
+  this.head = null;
+  this.tail = null;
   this.length = 0;
 
   this.push = function (data) {
-    this.peak = new Node(data, this.peak);
+    const newNode = new Node(data);
+
+    if (this.length === 0) {
+      this.head = newNode;
+    } else {
+      this.tail.next = newNode;
+    }
+
     this.length += 1;
+    this.tail = newNode;
   };
   this.pop = function () {
     if (this.length === 0) {
       return -1;
     }
 
-    const popItem = this.peak;
-    this.peak = popItem.next;
+    const popItem = this.head;
+    this.head = popItem.next;
     this.length -= 1;
+
     return popItem.data;
   };
-  this.top = function () {
-    if (this.length === 0) {
+  this.front = function () {
+    if (!this.length) {
       return -1;
     }
-    return this.peak.data;
+    return this.head.data;
+  };
+  this.back = function () {
+    if (!this.length) {
+      return -1;
+    }
+    return this.tail.data;
   };
   this.size = function () {
     return this.length;
@@ -46,10 +63,10 @@ function Stack() {
 }
 
 let answer = [];
-let stack = new Stack();
+let queue = new Queue();
 const command = arr.map((v) => v.split(" "));
 command.forEach(([cmd, data]) => {
-  data ? stack[cmd](data) : answer.push(stack[cmd]());
+  data ? queue[cmd](data) : answer.push(queue[cmd]());
 });
 
 console.log(answer.join("\n"));
