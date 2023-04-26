@@ -8,6 +8,7 @@ const [n, ...arr] = fs
   .trim()
   .split("\n");
 
+
 function Node(data, next) {
   this.data = data;
   this.next = next;

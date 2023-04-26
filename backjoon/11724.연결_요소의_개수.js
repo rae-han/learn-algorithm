@@ -21,12 +21,11 @@ const dfs = (node) => {
   if (visited[node]) {
     return;
   }
+  visited[next] = true;
 
   for (let i = 0; i < nodeCnt; i++) {
     const next = graph[node][i];
-
     if (!visited[next]) {
-      visited[next] = true;
       dfs(next);
     }
   }
